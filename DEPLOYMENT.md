@@ -1,8 +1,35 @@
 # Image Dropper - Deployment Guide
 
-## 🚀 Deployment Options
+## 🚀 Render Deployment (Recommended)
 
-### Option 1: Heroku (Recommended for beginners)
+### Quick Deploy to Render:
+
+1. **Go to Render**: https://render.com
+2. **Sign up/Login** with your GitHub account
+3. **Click "New +"** → **"Web Service"**
+4. **Connect your GitHub repo** (you may need to push this code to GitHub first)
+5. **Configure the service**:
+   - **Name**: `image-dropper` (or your choice)
+   - **Runtime**: `Node`
+   - **Build Command**: `npm install`
+   - **Start Command**: `npm start`
+   - **Plan**: Free tier is fine to start
+6. **Add Environment Variables**:
+   - `NODE_ENV` = `production`
+   - `PORT` = `10000` (Render will set this automatically)
+7. **Click "Create Web Service"**
+8. **Wait for deployment** (usually 2-5 minutes)
+9. **Your app will be live!** 🎉
+
+### Alternative: Use render.yaml (Blueprint)
+
+If you prefer using the blueprint file:
+1. Push your code to GitHub
+2. In Render dashboard, click "New +" → "Blueprint"
+3. Connect your repo and select the `render.yaml` file
+4. Deploy automatically!
+
+## 📋 Other Deployment Options
 1. Create a Heroku account at https://heroku.com
 2. Install Heroku CLI: `npm install -g heroku`
 3. Login: `heroku login`
