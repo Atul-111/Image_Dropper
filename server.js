@@ -23,7 +23,7 @@ if (!fs.existsSync(uploadsDir)) {
 // Middleware
 app.use(cors());
 app.use(express.json());
-app.use(express.static('public'));
+app.use(express.static(path.join(__dirname, 'public')));
 
 // Configure multer for file uploads
 const storage = multer.diskStorage({
@@ -164,6 +164,10 @@ app.get('/api/image-info/:id', (req, res) => {
 // Health check
 app.get('/api/health', (req, res) => {
   res.json({ status: 'OK', message: 'Image Dropper server is running' });
+});
+
+app.get('/favicon.ico', (req, res) => {
+  res.sendStatus(204);
 });
 
 // Error handling middleware
