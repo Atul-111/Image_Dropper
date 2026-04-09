@@ -7,12 +7,17 @@ const cors = require('cors');
 require('dotenv').config();
 
 const app = express();
+const isVercel = process.env.VERCEL === '1' || process.env.VERCEL === 'true';
 const PORT = process.env.PORT || 3000;
 
 // Create uploads directory if it doesn't exist
-const uploadsDir = path.join(__dirname, 'uploads');
+const uploadsDir = isVercel ? path.join('/tmp', 'uploads') : path.join(__dirname, 'uploads');
 if (!fs.existsSync(uploadsDir)) {
-  fs.mkdirSync(uploadsDir, { recursive: true });
+  try {
+    fs.mkdirSync(uploadsDir, { recursive: true });
+  } catch (err) {
+    console.error('Failed to create uploads directory:', uploadsDir, err);
+  }
 }
 
 // Middleware
@@ -183,15 +188,17 @@ app.use((req, res) => {
   res.status(404).json({ error: 'Not found' });
 });
 
-app.listen(PORT, () => {
-  console.log(`
+if (!isVercel) {
+  app.listen(PORT, () => {
+    console.log(`
 ╔════════════════════════════════════════╗
 ║     Image Dropper Server Started       ║
 ║            Port: ${PORT}                    ║
 ║  http://localhost:${PORT}              ║
 ╚════════════════════════════════════════╝
-  `);
-});
+    `);
+  });
+}
 
 // Export for Vercel serverless functions
 module.exports = app;
