@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Dropper - Share Images Easily</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <div class="header-content">
+                <h1 class="logo">📸 Image Dropper</h1>
+                <p class="tagline">Share your images instantly with shareable links</p>
+            </div>
+        </header>
+
+        <main class="main-content">
+            <div class="upload-section">
+                <div class="drop-zone" id="dropZone">
+                    <div class="drop-zone-icon">📤</div>
+                    <h2>Drag & Drop Your Image Here</h2>
+                    <p>or click to select a file</p>
+                    <p class="file-info">Supported: JPG, PNG, GIF, WebP (Max 50MB)</p>
+                </div>
+                <input type="file" id="fileInput" accept="image/*" style="display: none;">
+            </div>
+
+            <div id="uploadProgress" class="upload-progress" style="display: none;">
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progressFill"></div>
+                </div>
+                <span id="progressText">Uploading...</span>
+            </div>
+
+            <div id="resultSection" class="result-section" style="display: none;">
+                <div class="result-card">
+                    <div class="result-image-container">
+                        <img id="resultImage" src="" alt="Uploaded image" class="result-image">
+                    </div>
+
+                    <div class="result-info">
+                        <h3>Image Uploaded Successfully! ✅</h3>
+                        <p id="fileName" class="file-name"></p>
+
+                        <div class="url-section">
+                            <label>Share URL:</label>
+                            <div class="url-container">
+                                <input type="text" id="shareUrl" readonly class="url-input">
+                                <button class="copy-btn" onclick="copyToClipboard('shareUrl')">📋 Copy</button>
+                            </div>
+                        </div>
+
+                        <div class="url-section">
+                            <label>Download URL:</label>
+                            <div class="url-container">
+                                <input type="text" id="downloadUrl" readonly class="url-input">
+                                <button class="copy-btn" onclick="copyToClipboard('downloadUrl')">📋 Copy</button>
+                            </div>
+                        </div>
+
+                        <div class="action-buttons">
+                            <button class="btn btn-primary" onclick="location.href = document.getElementById('downloadUrl').value">
+                                ⬇️ Download Image
+                            </button>
+                            <button class="btn btn-secondary" onclick="shareOnSocial()">
+                                🔗 Share
+                            </button>
+                            <button class="btn btn-secondary" onclick="resetUpload()">
+                                🔄 Upload Another
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="errorMessage" class="error-message" style="display: none;"></div>
+        </main>
+
+        <footer class="footer">
+            <p>&copy; 2024 Image Dropper. Share images instantly.</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

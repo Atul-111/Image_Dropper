@@ -1,0 +1,12 @@
+node_modules/
+uploads/
+*.log
+.env.local
+.DS_Store
+dist/
+build/
+.idea/
+.vscode/settings.json
+*.swp
+*.swo
+*~

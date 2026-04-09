@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shared Image - Image Dropper</title>
+    <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <div class="header-content">
+                <h1 class="logo">📸 Image Dropper</h1>
+                <p class="tagline">Viewing shared image</p>
+            </div>
+        </header>
+
+        <main class="main-content">
+            <div id="loadingMessage" style="text-align: center; padding: 40px;">
+                <p>Loading image...</p>
+            </div>
+
+            <div id="errorSection" class="error-message" style="display: none; text-align: center;"></div>
+
+            <div id="imageSection" class="result-section" style="display: none;">
+                <div class="result-card">
+                    <div class="result-image-container">
+                        <img id="sharedImage" src="" alt="Shared image" class="result-image">
+                    </div>
+
+                    <div class="result-info">
+                        <h3>📸 Image Shared with You</h3>
+                        <p id="imageInfo" class="file-name"></p>
+
+                        <div class="action-buttons">
+                            <button class="btn btn-primary" id="downloadBtn">
+                                ⬇️ Download Image
+                            </button>
+                            <button class="btn btn-secondary" onclick="copyImageUrl()">
+                                📋 Copy Image URL
+                            </button>
+                            <button class="btn btn-secondary" onclick="shareThis()">
+                                🔗 Share This Image
+                            </button>
+                        </div>
+
+                        <div style="margin-top: 30px; padding-top: 20px; border-top: 1px solid var(--border-color);">
+                            <a href="/" style="color: var(--primary-color); text-decoration: none; font-weight: 600;">
+                                ➕ Upload Your Own Image
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <footer class="footer">
+            <p>&copy; 2024 Image Dropper. Share images instantly.</p>
+        </footer>
+    </div>
+
+    <script src="/share-script.js"></script>
+</body>
+</html>
