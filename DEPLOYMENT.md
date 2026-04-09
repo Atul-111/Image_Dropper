@@ -1,8 +1,40 @@
 # Image Dropper - Deployment Guide
 
-## 🚀 Render Deployment (Recommended)
+## 🚀 Vercel Deployment (Fast & Easy)
 
-### Quick Deploy to Render:
+### Quick Deploy to Vercel:
+
+1. **Go to Vercel**: https://vercel.com
+2. **Sign up/Login** with your GitHub account
+3. **Click "Import Project"**
+4. **Connect your GitHub repository** (push your code to GitHub first)
+5. **Configure the project**:
+   - **Framework Preset**: `Other`
+   - **Root Directory**: `./` (leave as default)
+   - **Build Command**: `npm run build` (optional)
+   - **Output Directory**: `./` (leave as default)
+6. **Add Environment Variables** (optional):
+   - `NODE_ENV` = `production`
+7. **Click "Deploy"**
+8. **Wait for deployment** (usually 1-3 minutes)
+9. **Your app will be live!** 🎉
+
+### Alternative: Vercel CLI
+
+If you prefer using CLI:
+```bash
+npm install -g vercel
+cd "c:\Users\t14\Desktop\Image_Dropper"
+vercel
+```
+
+## ⚠️ Important Vercel Notes:
+
+- **File Storage Limitation**: Vercel's serverless functions have read-only file systems. Uploaded images will NOT persist between deployments.
+- **For Production**: Consider using cloud storage (AWS S3, Cloudinary) for persistent file storage.
+- **Free Tier**: Includes 100GB bandwidth, custom domains, and more.
+
+## 📋 Other Deployment Options
 
 1. **Go to Render**: https://render.com
 2. **Sign up/Login** with your GitHub account
